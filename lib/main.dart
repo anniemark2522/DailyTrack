@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'book_page.dart'; // นำเข้าหน้าใหม่ที่สร้างไว้
-import 'mood.dart';
+import 'package:project_anne/ExpenseTrack/expense.dart';
+import 'BookTrack/book_page.dart';
+import 'MoodTrack/mood.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MaterialApp(
@@ -20,11 +22,11 @@ class _MyAppState extends State<MyApp> {
   int screenIndex = 0;
 
   final List<String> appBarTitles = [
-    'Daily Track',      // index 0 - Home
-    'Book Track',    // index 1 - BookPage
-    'Money Track',          // index 2 - Savings
-    'Mood Track',         // index 3 - Emotions
-    'Settings',         // index 4 - Settings
+    'Daily Track', // index 0 - Home
+    'Book Track', // index 1 - BookPage
+    'Money Track', // index 2 - Savings
+    'Mood Track', // index 3 - Emotions
+    'Settings', // index 4 - Settings
   ];
 
   @override
@@ -48,7 +50,7 @@ class _MyAppState extends State<MyApp> {
             ),
             SizedBox(width: 10),
             Text(
-              appBarTitles[screenIndex],   // ใช้ชื่อตาม screenIndex
+              appBarTitles[screenIndex], // ใช้ชื่อตาม screenIndex
               style: TextStyle(
                 color: Color(0xFF534684),
                 fontWeight: FontWeight.bold,
@@ -76,10 +78,11 @@ class _MyAppState extends State<MyApp> {
         children: [
           Center(child: Text('Home Screen', style: TextStyle(fontSize: 18))),
           BookPage(),
-          Center(child: Text('Savings Screen', style: TextStyle(fontSize: 18))),
+          SavingPage(),
           // Center(child: Text('Emotions Screen', style: TextStyle(fontSize: 18))),
           MoodPage(),
-          Center(child: Text('Settings Screen', style: TextStyle(fontSize: 18))),
+          Center(
+              child: Text('Settings Screen', style: TextStyle(fontSize: 18))),
         ],
       ),
       bottomNavigationBar: _buildBottomNavigationBar(),
